@@ -1,0 +1,45 @@
+THINGS THAT SHOULD BE DONE BEFORE RUNNING
+
+GETTING CANVAS TOKEN
+  go to canvas
+    1.click account
+    2.click settings
+    3.scroll to "Approved Integrations:"
+    4.click "New Access Token"
+    5.write something in the purpose box
+    6.copy the code where it says "Token: "
+
+INSTALL PIP
+  Before installing pip, make sure you have python installed on mac (it should be installed already)
+      python --version
+        -this checks python version
+  
+  Run these lines in terminal
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python get-pip.py
+    
+  Now you should have pip installed.
+  
+INSTALL CANVASAPI
+   this is a library needed to run the program
+      pip install canvasapi
+      
+      
+NOW TO RUN!
+   1.open terminal
+   2.now you need to direct to the place where you saved the "main.py" file
+      2.a. probably in your downloads
+   3. Once terminal type "cd Downloads" but without the quotations
+      3.a this will direct you to Downloads folder
+      
+   4. Now type "python3 main.py" without quotations
+   5. a pop-up will appear and click "ok"
+   
+   6. Now a "Assignments.txt" should be on your Desktop!
+   
+      
+      
+      
+     
+    
+    
