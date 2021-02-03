@@ -3,16 +3,18 @@ import requests
 from datetime import datetime
 import os.path
 from os import path
+import getpass
 
 def userInput():
+    print("PLEASE MAKE SURE YOUR USERNAME HAS NO SPACES. This is your current username: " + getpass.getuser())
     print("What is your canvas token?")
     tokenInput = input()
     return tokenInput
 
 
-if not path.exists("/Users/emmanuelpaz/Desktop/Assignments.txt"):
+if not path.exists("/Users/"+getpass.getuser()+"/Desktop/Assignments.txt"):
     token = userInput()
-    filePath = "/Users/emmanuelpaz/Desktop/Assignments.txt"
+    filePath = "/Users/"+getpass.getuser()+"/Desktop/Assignments.txt"
     file = open(filePath, 'w+')
     canvas = Canvas(base_url="https://canvas.iastate.edu/", access_token=token)
     user = canvas.get_user(89074)
@@ -65,7 +67,7 @@ if not path.exists("/Users/emmanuelpaz/Desktop/Assignments.txt"):
 
 else:
 
-    filePath = "/Users/emmanuelpaz/Desktop/Assignments.txt"
+    filePath = "/Users/"+getpass.getuser()+"/Desktop/Assignments.txt"
     fileRead = open(filePath, 'r')
     tokenRead = fileRead.readline()[14:-1]
     fileRead.close()
