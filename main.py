@@ -17,7 +17,10 @@ if not path.exists("/Users/"+getpass.getuser()+"/Desktop/Assignments.txt"):
     filePath = "/Users/"+getpass.getuser()+"/Desktop/Assignments.txt"
     file = open(filePath, 'w+')
     canvas = Canvas(base_url="https://canvas.iastate.edu/", access_token=token)
-    user = canvas.get_user(89074)
+    userString = str(canvas.get_current_user())[-7:]
+    userStringReplaced = userString.replace('(', '')
+    userStringReplaced2 = userStringReplaced.replace(')', '')
+    user = canvas.get_user(int(userStringReplaced2))
     courses = user.get_courses(enrollment_state='active')
     currentNumber = 0
     semester_courses = []
