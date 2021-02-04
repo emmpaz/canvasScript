@@ -24,10 +24,15 @@ if not path.exists("/Users/"+getpass.getuser()+"/Desktop/Assignments.txt"):
     courses = user.get_courses(enrollment_state='active')
     currentNumber = 0
     semester_courses = []
-    for course in courses:
-        if str(course)[:5] == "S2021":
-            semester_courses.append(course)
     now = datetime.now()
+    semesterInitial = ""
+    if now.month < 6 or now.month >= 1:
+        semesterInitial = "S"
+    else:
+        semesterInitial = "F"
+    for course in courses:
+        if str(course)[:5] == semesterInitial+str(now.year):
+            semester_courses.append(course)
 
     file.write("Access token: "+token+"\n\n")
     file.write("Date today: " + now.strftime("%m/%d/%Y") + "\n\n")
