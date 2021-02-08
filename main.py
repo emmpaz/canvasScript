@@ -70,40 +70,46 @@ for c in semester_courses:
     listHW = r.json()
     listQuizzes = rQuiz.json()
     file.write("       HW\n")
-    if len(listHW) > 0:
-        for x in listHW:
-            if x['due_at'] is None:
-                file.write("              - " + x['name'] + ": Due Date - None\n")
-            else:
-                month = int(x['due_at'][5:7])
-                day = int(x['due_at'][8:10])
-                year = x['due_at'][0:4]
-                if now.month <= month:
-                    if now.day <= day:
-                        file.write(
-                            "              - " + x['name'] + ": Due Date - " + x['due_at'][5:7] + "/" + x['due_at'][
-                                                                                                        8:10] + "/" + year + "\n")
-    else:
-        file.write("                NO ASSIGNMENTS\n")
-    file.write("       Quiz\n")
-    if len(listQuizzes) > 0:
-        for y in listQuizzes:
-            if not y == 'message':
-                if y['due_at'] is None:
-                    file.write("              - " + y['name'] + ": Due Date - None\n")
+    try:
+        if len(listHW) > 0:
+            for x in listHW:
+                if x['due_at'] is None:
+                    file.write("              - " + x['name'] + ": Due Date - None\n")
                 else:
-                    quizMonth = int(y['due_at'][5:7])
-                    quizDay = int(y['due_at'][8:10])
-                    quizYear = y['due_at'][0:4]
-                    if now.month <= quizMonth:
-                        if now.day <= quizDay:
+                    month = int(x['due_at'][5:7])
+                    day = int(x['due_at'][8:10])
+                    year = x['due_at'][0:4]
+                    if now.month <= month:
+                        if now.day <= day:
                             file.write(
-                                "              - " + y['title'] + ": Due Date - " + y['due_at'][5:7] + "/" + y[
-                                                                                                                 'due_at'][
-                                                                                                             8:10] + "/" + quizYear + "\n")
-            else:
-                file.write("                NO QUIZZES\n")
-    else:
-        file.write("                NO QUIZZES\n")
+                                "              - " + x['name'] + ": Due Date - " + x['due_at'][5:7] + "/" + x['due_at'][
+                                                                                                            8:10] + "/" + year + "\n")
+        else:
+            file.write("                NO ASSIGNMENTS\n")
+        file.write("       Quiz\n")
+    except:
+        file.write("Failed to print\n");
+    try:
+        if len(listQuizzes) > 0:
+            for y in listQuizzes:
+                if not y == 'message':
+                    if y['due_at'] is None:
+                        file.write("              - " + y['name'] + ": Due Date - None\n")
+                    else:
+                        quizMonth = int(y['due_at'][5:7])
+                        quizDay = int(y['due_at'][8:10])
+                        quizYear = y['due_at'][0:4]
+                        if now.month <= quizMonth:
+                            if now.day <= quizDay:
+                                file.write(
+                                    "              - " + y['title'] + ": Due Date - " + y['due_at'][5:7] + "/" + y[
+                                                                                                                     'due_at'][
+                                                                                                                 8:10] + "/" + quizYear + "\n")
+                else:
+                    file.write("                NO QUIZZES\n")
+        else:
+            file.write("                NO QUIZZES\n")
+    except:
+        file.write("Failed to print\n")
 
 file.close()
