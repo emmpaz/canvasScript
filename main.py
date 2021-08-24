@@ -43,7 +43,7 @@ semester_courses = []
 
 now = datetime.now()
 semesterInitial = ""
-if now.month < 6 or now.month >= 1:
+if now.month < 6:
     semesterInitial = "S"
 else:
     semesterInitial = "F"
