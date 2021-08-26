@@ -42,7 +42,10 @@ currentNumber = 0
 semester_courses = []
 
 now = datetime.now()
+<<<<<<< HEAD
 print(now.month)
+=======
+>>>>>>> c7c94997696e618e6e78798a6d887a24e8788ee4
 semesterInitial = ""
 if now.month < 6:
     semesterInitial = "S"
@@ -113,4 +116,8 @@ for c in semester_courses:
     except:
         file.write("Failed to print\n")
 
+<<<<<<< HEAD
 file.close()
+=======
+file.close()
+>>>>>>> c7c94997696e618e6e78798a6d887a24e8788ee4
